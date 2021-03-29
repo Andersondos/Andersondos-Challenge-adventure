@@ -1,0 +1,103 @@
+<div class="container space">
+  <form>
+    <fieldset>
+      <div class="row g-3 align-items-center">
+        <legend>Iniciar entrega:</legend>
+        <div class="col-auto">
+          <label for="fTipo">Tipo</label>
+        </div>
+        <select class="form-control col-lg-2" name="tipo" type="text" id="tipo" [(ngModel)]="carga.tipo">
+          <option value="A">Inflamável </option>
+          <option value="B">Risco Biológic</option>
+          <option value="C">Refrigerado </option>
+          <option value="D">Sem características especiais</option>
+        </select>
+        <div class="col-auto">
+          <label for="fsemana">Semana:</label>
+        </div>
+        <select class="form-control col-lg-2" name="semana" type="text" id="semana" [(ngModel)]="carga.semana">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <div class="col-auto">
+          <label for="fMes">Mes</label>
+        </div>
+        <select class="form-control col-lg-2" name="mes" type="text" id="mes" [(ngModel)]="carga.mes">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <div class="col-auto">
+          <label for="fAno">Ano</label>
+        </div>
+        <div class="col-lg-2">
+          <input class="form-control" type="number" id="ano" name="ano" [(ngModel)]="carga.ano">
+        </div>
+        <div>
+          <input class="btn btn-primary" type="submit" (click)="Iniciar()" value="Iniciar">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="container space">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search" aria-label="Pesquisar por mês"
+      aria-describedby="button-addon2" [(ngModel)]="search">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="Search()"><i class="fas fa-search"></i></button>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped comBordas">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Saida</th>
+        <th scope="col">Retorno</th>
+        <th scope="col">Preço</th>
+        <th scope="col">status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carga of cargaList">
+        <td>{{carga.id}}</td>
+        <td>{{carga.quantidade}}</td>
+        <td>{{carga.tipo_minerais}}</td>
+        <td>{{carga.data_Saida}}</td>
+        <td>{{carga.data_Retorno}}</td>
+        <td>{{carga.preco}}</td>
+        <td *ngIf="carga.status == 0 ">
+          <button class="btn btn-outline-primary" color="primary" (click)="Entrege(carga.id)" title="Entregar">
+            <i class="fas fa-truck"></i>
+          </button>
+        </td>
+        <td *ngIf="carga.status == 1 ">
+          <i class="fas fa-truck-loading"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+</div>
