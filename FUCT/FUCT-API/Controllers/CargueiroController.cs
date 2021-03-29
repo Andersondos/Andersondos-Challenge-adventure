@@ -50,9 +50,8 @@ namespace FUCT_API.Controllers
             {
 
                 if(index > 0)
-                {
-                    index = index * size;
-                }
+                    index *= size;
+
                 var cargaPaginada = _CagueiroService.PagedLoad(index, size, search, orderBy, orderType);
 
                 return Ok(cargaPaginada);
